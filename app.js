@@ -7,6 +7,7 @@ import authRouter from './routes/auth.routes.js'
 import subscriptionRouter from "./routes/subscription.routes.js";
 import connectToDatabase from "./database/mongodb.js";
 import errorMiddleware from './middlewares/error.middleware.js';
+import cookieParser from 'cookie-parser';
 
 
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 app.use(errorMiddleware);
 app.use(express.json());  // process the incoming request with JSON payload
 app.use(express.urlencoded({ extended: false })); // process the incoming request with URL-encoded payload
+app.use(cookieParser()); // parses/reads cookies from the request
 
 
 // api/v1/auth/sign-up
